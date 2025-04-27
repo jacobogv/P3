@@ -48,6 +48,24 @@ Ejercicios básicos
      autocorrelación. Inserte a continuación el código correspondiente.
 
    * Implemente la regla de decisión sonoro o sordo e inserte el código correspondiente.
+   A continuación, se muestra una primera versión para determinar la decsisión de voiced o unvoiced:
+   ````
+  bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm) const {
+    /// \TODO Implement a rule to decide whether the sound is voiced or not.
+    /// * You can use the standard features (pot, r1norm, rmaxnorm),
+    ///   or compute and use other ones.
+    /// \HECHO criterio de decisión voiced o unvoiced
+    const float pot_threshold = -30.0f;
+    const float r1norm_threshold = 0.2f;
+    const float rmaxnorm_threshold = 0.4f;
+
+    if (pot < pot_threshold || r1norm < r1norm_threshold || rmaxnorm < rmaxnorm_threshold) {
+      return true;//unvoiced
+    } else {
+      return false;//voiced
+    }
+  }
+  ```
 
    * Puede serle útil seguir las instrucciones contenidas en el documento adjunto `código.pdf`.
 
