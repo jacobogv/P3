@@ -48,8 +48,9 @@ Ejercicios básicos
      autocorrelación. Inserte a continuación el código correspondiente.
 
    * Implemente la regla de decisión sonoro o sordo e inserte el código correspondiente.
+   
    A continuación, se muestra una primera versión para determinar la decsisión de voiced o unvoiced:
-   ````
+   ```
   bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm) const {
     /// \TODO Implement a rule to decide whether the sound is voiced or not.
     /// * You can use the standard features (pot, r1norm, rmaxnorm),
@@ -66,8 +67,7 @@ Ejercicios básicos
     }
   }
   ```
-
-   * Puede serle útil seguir las instrucciones contenidas en el documento adjunto `código.pdf`.
+* Puede serle útil seguir las instrucciones contenidas en el documento adjunto `código.pdf`.
 
 - Una vez completados los puntos anteriores, dispondrá de una primera versión del estimador de pitch. El 
   resto del trabajo consiste, básicamente, en obtener las mejores prestaciones posibles con él.
