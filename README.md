@@ -100,8 +100,8 @@ Ejercicios básicos
       }
       ```
 * Implemente la regla de decisión sonoro o sordo e inserte el código correspondiente.
-   
-      A continuación, se muestra una primera versión para determinar la decisión de voiced o unvoiced:
+
+  A continuación, se muestra una primera versión para determinar la decisión de voiced o unvoiced:
    ```
   bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm) const {
     /// \TODO Implement a rule to decide whether the sound is voiced or not.
