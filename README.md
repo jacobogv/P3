@@ -99,7 +99,7 @@ Ejercicios básicos
       else
       return (float) samplingFreq/(float) lag;
       }
-    ```
+      ```
 * Implemente la regla de decisión sonoro o sordo e inserte el código correspondiente.
    
       A continuación, se muestra una primera versión para determinar la decisión de voiced o unvoiced:
