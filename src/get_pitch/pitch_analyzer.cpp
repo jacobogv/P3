@@ -13,10 +13,15 @@ namespace upc {
     for (unsigned int l = 0; l < r.size(); ++l) {
   		/// \TODO Compute the autocorrelation r[l]
       /// Para cada TODO que hay en el código los completemos añadir comando 
-      /// \FET hemos hecho la autocorrelación sesgada
       /// \f[
       /// r_{xx}[m]=\frac{1}{N} \sum_{n=0}^{N-m} x[n] x[n+m]
       /// \f]
+      /// \FET hemos hecho la autocorrelación sesgada
+      r[l] = 0.0f;
+      for (unsigned int n = 0; n < x.size() - l; ++n) {
+        r[l] += x[n] * x[n+l];
+      }
+      r[l] /= x.size();//normalització.
     }
 
     if (r[0] == 0.0F) //to avoid log() and divide zero 
@@ -55,7 +60,16 @@ namespace upc {
     /// \TODO Implement a rule to decide whether the sound is voiced or not.
     /// * You can use the standard features (pot, r1norm, rmaxnorm),
     ///   or compute and use other ones.
-    return true;
+    /// \FET criteri per triar si és sonor o no
+    const float pot_threshold = -30.0f;
+    const float r1norm_threshold = 0.2f;
+    const float rmaxnorm_threshold = 0.4f;
+
+    if (pot < pot_threshold || r1norm < r1norm_threshold || rmaxnorm < rmaxnorm_threshold) {
+      return true;//unvoiced
+    } else {
+      return false;//voiced
+    }
   }
 
   float PitchAnalyzer::compute_pitch(vector<float> & x) const {
@@ -71,7 +85,16 @@ namespace upc {
     //Compute correlation
     autocorrelation(x, r);
 
-    vector<float>::const_iterator iR = r.begin(), iRMax = iR;
+    //vector<float>::const_iterator iR = r.begin(), iRMax = iR;
+    unsigned int lag = 0;
+    float max_corr = r[1];//r[0] no ens interessa.
+
+    for (unsigned int i = 1; i < r.size(); ++i) {
+      if (r[i] > max_corr) {
+        max_corr = r[i];
+        lag = i;
+      }
+    }
 
     /// \TODO 
 	/// Find the lag of the maximum value of the autocorrelation away from the origin.<br>
@@ -80,8 +103,9 @@ namespace upc {
 	///    - The lag corresponding to the maximum value of the pitch.
     ///	   .
 	/// In either case, the lag should not exceed that of the minimum value of the pitch.
+  /// \FET hemos hecho la búsqueda del máximo, excluyendo r[0]
 
-    unsigned int lag = iRMax - r.begin();
+    //unsigned int lag = iRMax - r.begin();
 
     float pot = 10 * log10(r[0]);
 
