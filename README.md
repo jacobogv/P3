@@ -22,7 +22,7 @@ Ejercicios básicos
     for (unsigned int l = 0; l < r.size(); ++l) {
   	  /// \TODO Compute the autocorrelation r[l]
       /// Para cada TODO que hay en el código los completemos añadir comando
-      /// \FET hemos hecho la autocorrelación sesgada
+      /// \HECHO hemos hecho la autocorrelación sesgada
       /// \f[
       /// r_{xx}[m]=\frac{1}{N} \sum_{n=0}^{N-m} x[n] x[n+m]
       /// \f]
