@@ -23,7 +23,7 @@ def calcular_autocorrelacion(signal, fs):
     return autocorr, lags, first_secondary_peak
 
 # Cargar la señal WAV
-filename = 'graficar.wav'  # Cambia esto por el nombre de tu archivo WAV
+filename = 'graficar.wav'
 fs, signal = wavfile.read(filename)
 
 # Si la señal tiene más de un canal, tomar solo el primero (mono)
