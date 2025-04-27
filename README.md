@@ -18,14 +18,18 @@ Ejercicios básicos
    A continuación se muestra el código esperado:
 
    `void PitchAnalyzer::autocorrelation(const vector<float> &x,` `vector<float> &r) const {`
-
     `for (unsigned int l = 0; l < r.size(); ++l) {`
-  		`/// \TODO Compute the autocorrelation r[l]`
+  		
+      `/// \TODO Compute the autocorrelation r[l]`
+      
       `/// Para cada TODO que hay en el código los completemos añadir comando `
+      
       `/// \f[`
       `/// r_{xx}[m]=\frac{1}{N} \sum_{n=0}^{N-m} x[n] x[n+m]`
       `/// \f]`
+      
       `/// \FET hemos hecho la autocorrelación sesgada`
+     
       `r[l] = 0.0f;`
       `for (unsigned int n = 0; n < x.size() - l; ++n) {`
         `r[l] += x[n] * x[n+l];`
