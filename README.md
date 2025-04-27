@@ -47,9 +47,8 @@ Ejercicios básicos
    * Determine el mejor candidato para el periodo de pitch localizando el primer máximo secundario de la
      autocorrelación. Inserte a continuación el código correspondiente.
 
-     El mejor candidato para el periodo de pitch es la inversa de la frecuencia fundamental. 
      Se buscará el primer máximo secundario en la gráfica de autocorrelación, esto es, excluyendo el valor de r[0]. Seguidamente, se muestra el desarrollo del código que consigue darnos tal valor.
-     
+
    * Implemente la regla de decisión sonoro o sordo e inserte el código correspondiente.
    
       A continuación, se muestra una primera versión para determinar la decisión de voiced o unvoiced:
