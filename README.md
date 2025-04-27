@@ -74,13 +74,13 @@ Ejercicios básicos
     }
 
     /// \TODO 
-	/// Find the lag of the maximum value of the autocorrelation away from the origin.<br>
-	/// Choices to set the minimum value of the lag are:
-	///    - The first negative value of the autocorrelation.
-	///    - The lag corresponding to the maximum value of the pitch.
+	  /// Find the lag of the maximum value of the autocorrelation away from the origin.<br>
+	  /// Choices to set the minimum value of the lag are:
+	  ///    - The first negative value of the autocorrelation.
+	  ///    - The lag corresponding to the maximum value of the pitch.
     ///	   .
-	/// In either case, the lag should not exceed that of the minimum value of the pitch.
-  /// \HECHO hemos hecho la búsqueda del primer máximo secundario, excluyendo r[0]
+	  /// In either case, the lag should not exceed that of the minimum value of the pitch.
+    /// \HECHO hemos hecho la búsqueda del primer máximo secundario, excluyendo r[0]
 
     //unsigned int lag = iRMax - r.begin();
 
@@ -89,25 +89,18 @@ Ejercicios básicos
     //You can print these (and other) features, look at them using wavesurfer
     //Based on that, implement a rule for unvoiced
     //change to #if 1 and compile
-#if 0
+    #if 0
     if (r[0] > 0.0F)
       cout << pot << '\t' << r[1]/r[0] << '\t' << r[lag]/r[0] << endl;
-#endif
+    #endif
     
     if (unvoiced(pot, r[1]/r[0], r[lag]/r[0]))
       return 0;
     else
       return (float) samplingFreq/(float) lag;
-  }
-  ``
-  
-  
-  
-  
-  
-  
-  
-  * Implemente la regla de decisión sonoro o sordo e inserte el código correspondiente.
+    }
+    ```
+* Implemente la regla de decisión sonoro o sordo e inserte el código correspondiente.
    
       A continuación, se muestra una primera versión para determinar la decisión de voiced o unvoiced:
    ```
