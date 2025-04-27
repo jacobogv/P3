@@ -19,7 +19,6 @@ Ejercicios básicos
 
    void PitchAnalyzer::autocorrelation(const vector<float> &x, vector<float> &r) const {
     for (unsigned int l = 0; l < r.size(); ++l) {
-  		
       /// \TODO Compute the autocorrelation r[l]
       /// Para cada TODO que hay en el código los completemos añadir comando
       /// \FET hemos hecho la autocorrelación sesgada
@@ -32,7 +31,6 @@ Ejercicios básicos
       }
       r[l] /= x.size();//normalització.
     }
-
     if (r[0] == 0.0F) //to avoid log() and divide zero 
       r[0] = 1e-10; 
   }
