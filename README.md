@@ -47,9 +47,67 @@ Ejercicios básicos
    * Determine el mejor candidato para el periodo de pitch localizando el primer máximo secundario de la
      autocorrelación. Inserte a continuación el código correspondiente.
 
-     Se buscará el primer máximo secundario en la gráfica de autocorrelación, esto es, excluyendo el valor de r[0]. Seguidamente, se muestra el desarrollo del código que consigue darnos tal valor.
+     Se buscará el primer máximo secundario en la gráfica de autocorrelación, esto es, excluyendo el valor de r[0]. Seguidamente, se muestra el desarrollo del código que consigue darnos tal valor:
+     ```
+     float PitchAnalyzer::compute_pitch(vector<float> & x) const {
+    if (x.size() != frameLen)
+      return -1.0F;
 
-   * Implemente la regla de decisión sonoro o sordo e inserte el código correspondiente.
+    //Window input frame
+    for (unsigned int i=0; i<x.size(); ++i)
+      x[i] *= window[i];
+
+    vector<float> r(npitch_max);
+
+    //Compute correlation
+    autocorrelation(x, r);
+
+    //vector<float>::const_iterator iR = r.begin(), iRMax = iR;
+    unsigned int lag = 0;
+    float max_corr = r[1];//r[0] no ens interessa.
+
+    for (unsigned int i = 1; i < r.size(); ++i) {
+      if (r[i] > max_corr) {
+        max_corr = r[i];
+        lag = i;
+      }
+    }
+
+    /// \TODO 
+	/// Find the lag of the maximum value of the autocorrelation away from the origin.<br>
+	/// Choices to set the minimum value of the lag are:
+	///    - The first negative value of the autocorrelation.
+	///    - The lag corresponding to the maximum value of the pitch.
+    ///	   .
+	/// In either case, the lag should not exceed that of the minimum value of the pitch.
+  /// \HECHO hemos hecho la búsqueda del primer máximo secundario, excluyendo r[0]
+
+    //unsigned int lag = iRMax - r.begin();
+
+    float pot = 10 * log10(r[0]);
+
+    //You can print these (and other) features, look at them using wavesurfer
+    //Based on that, implement a rule for unvoiced
+    //change to #if 1 and compile
+#if 0
+    if (r[0] > 0.0F)
+      cout << pot << '\t' << r[1]/r[0] << '\t' << r[lag]/r[0] << endl;
+#endif
+    
+    if (unvoiced(pot, r[1]/r[0], r[lag]/r[0]))
+      return 0;
+    else
+      return (float) samplingFreq/(float) lag;
+  }
+  ``
+  
+  
+  
+  
+  
+  
+  
+  * Implemente la regla de decisión sonoro o sordo e inserte el código correspondiente.
    
       A continuación, se muestra una primera versión para determinar la decisión de voiced o unvoiced:
    ```
