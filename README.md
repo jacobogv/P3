@@ -15,12 +15,12 @@ Ejercicios básicos
 
    * Complete el cálculo de la autocorrelación e inserte a continuación el código correspondiente.
 
-   
+
    ```
    void PitchAnalyzer::autocorrelation(const vector<float> &x, vector<float> &r) const {
 
     for (unsigned int l = 0; l < r.size(); ++l) {
-  		/// \TODO Compute the autocorrelation r[l]
+  	/// \TODO Compute the autocorrelation r[l]
       /// Para cada TODO que hay en el código los completemos añadir comando
       /// \FET hemos hecho la autocorrelación sesgada
       /// \f[
@@ -30,7 +30,7 @@ Ejercicios básicos
       for (unsigned int n = 0; n < x.size() - l; ++n) {
         r[l] += x[n] * x[n+l];
       }
-      r[l] /= x.size();//normalització.
+      r[l] /= x.size();//normalitzación.
     }
 
     if (r[0] == 0.0F) //to avoid log() and divide zero 
