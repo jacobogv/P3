@@ -103,7 +103,7 @@ namespace upc {
 	///    - The lag corresponding to the maximum value of the pitch.
     ///	   .
 	/// In either case, the lag should not exceed that of the minimum value of the pitch.
-  /// \FET hemos hecho la búsqueda del máximo, excluyendo r[0]
+  /// \HECHO hemos hecho la búsqueda del primer máximo secundario, excluyendo r[0]
 
     //unsigned int lag = iRMax - r.begin();
 
