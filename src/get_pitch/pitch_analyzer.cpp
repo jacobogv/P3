@@ -60,7 +60,7 @@ namespace upc {
     /// \TODO Implement a rule to decide whether the sound is voiced or not.
     /// * You can use the standard features (pot, r1norm, rmaxnorm),
     ///   or compute and use other ones.
-    /// \FET criteri per triar si és sonor o no
+    /// \HECHO criterio de decisión voiced o unvoiced
     const float pot_threshold = -30.0f;
     const float r1norm_threshold = 0.2f;
     const float rmaxnorm_threshold = 0.4f;
