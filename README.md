@@ -1,5 +1,7 @@
 PAV - P3: estimación de pitch
 =============================
+Natalia Sanz y Jacobo Ghaffar
+----------------------------------
 
 Esta práctica se distribuye a través del repositorio GitHub [Práctica 3](https://github.com/albino-pav/P3).
 Siga las instrucciones de la [Práctica 2](https://github.com/albino-pav/P2) para realizar un `fork` de la
