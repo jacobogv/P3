@@ -41,7 +41,8 @@ Ejercicios básicos
      unos 30 ms de un fonema sonoro y su periodo de pitch; y, en otro *subplot*, se vea con claridad la
 	 autocorrelación de la señal y la posición del primer máximo secundario.
 
-   Para este punto, se ha usado la señal de prueba, cortada a un trozo de interés en el que hay fonemas sordos. Se ha usado Python con la biblioteca matplotlib para obtener los siguientes resultados:
+      Para este punto, se ha usado la señal `prueba.wav`, cortada a un trozo de interés en el que hay fonemas sordos y que se ha nombrado `graficar.wav`. Aunque dure 1.75s, el programa ya se encarga de coger 30ms. 
+      Se ha usado **Python** con la biblioteca `matplotlib` para obtener los siguientes resultados:
    ![alt text](grafica30ms.png)
 
 	 NOTA: es más que probable que tenga que usar Python, Octave/MATLAB u otro programa semejante para
