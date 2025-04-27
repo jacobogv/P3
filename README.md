@@ -64,13 +64,13 @@ Ejercicios básicos
 
       //vector<float>::const_iterator iR = r.begin(), iRMax = iR;
       unsigned int lag = 0;
-      float max_corr = r[1];//r[0] no ens interessa.
+      float max_corr = r[1];
 
       for (unsigned int i = 1; i < r.size(); ++i) {
-      if (r[i] > max_corr) {
-        max_corr = r[i];
-        lag = i;
-      }
+        if (r[i] > max_corr) {
+          max_corr = r[i];
+          lag = i;
+        }
       }
 
       /// \TODO 
@@ -78,7 +78,6 @@ Ejercicios básicos
 	    /// Choices to set the minimum value of the lag are:
 	    ///    - The first negative value of the autocorrelation.
 	    ///    - The lag corresponding to the maximum value of the pitch.
-      ///	   .
 	    /// In either case, the lag should not exceed that of the minimum value of the pitch.
       /// \HECHO hemos hecho la búsqueda del primer máximo secundario, excluyendo r[0]
 
@@ -90,14 +89,14 @@ Ejercicios básicos
       //Based on that, implement a rule for unvoiced
       //change to #if 1 and compile
       #if 0
-      if (r[0] > 0.0F)
-      cout << pot << '\t' << r[1]/r[0] << '\t' << r[lag]/r[0] << endl;
+        if (r[0] > 0.0F)
+          cout << pot << '\t' << r[1]/r[0] << '\t' << r[lag]/r[0] << endl;
       #endif
     
-      if (unvoiced(pot, r[1]/r[0], r[lag]/r[0]))
-      return 0;
-      else
-      return (float) samplingFreq/(float) lag;
+        if (unvoiced(pot, r[1]/r[0], r[lag]/r[0]))
+          return 0;
+        else
+          return (float) samplingFreq/(float) lag;
       }
       ```
 * Implemente la regla de decisión sonoro o sordo e inserte el código correspondiente.
