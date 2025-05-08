@@ -35,8 +35,13 @@ namespace upc {
     window.resize(frameLen);
 
     switch (win_type) {
-    case HAMMING:
+    case HAMMING: //no mejora con la Hamming.
       /// \TODO Implement the Hamming window
+      /// \HECHO
+      for (size_t n = 0; n < frameLen; ++n) {
+        float window_value = 0.54f - 0.46f * std::cos(2.0f * M_PI * n / (frameLen - 1));
+        window[n] = window_value;
+      }
       break;
     case RECT:
     default:
@@ -56,20 +61,22 @@ namespace upc {
       npitch_max = frameLen/2;
   }
 
-  bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm) const {
+  bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm, float zcr) const {
     /// \TODO Implement a rule to decide whether the sound is voiced or not.
     /// * You can use the standard features (pot, r1norm, rmaxnorm),
     ///   or compute and use other ones.
     /// \HECHO criterio de decisión voiced o unvoiced
-    const float pot_threshold = -30.0f;
+    const float pot_threshold = -40.0f;
     const float r1norm_threshold = 0.2f;
     const float rmaxnorm_threshold = 0.4f;
+    const float zcr_threshold = 0.15f;
 
-    if (pot < pot_threshold || r1norm < r1norm_threshold || rmaxnorm < rmaxnorm_threshold) {
+    if (pot < pot_threshold || r1norm < r1norm_threshold || rmaxnorm < rmaxnorm_threshold || zcr > zcr_threshold) {
       return true;//unvoiced
     } else {
       return false;//voiced
     }
+    
   }
 
   float PitchAnalyzer::compute_pitch(vector<float> & x) const {
@@ -108,6 +115,13 @@ namespace upc {
     //unsigned int lag = iRMax - r.begin();
 
     float pot = 10 * log10(r[0]);
+    float zcr = 0;
+    for (size_t i = 1; i < x.size(); ++i) {
+      if ((x[i - 1] >= 0 && x[i] < 0) || (x[i - 1] < 0 && x[i] >= 0)) {
+        zcr += 1;
+      }
+    }
+    zcr /= static_cast<float>(x.size());
 
     //You can print these (and other) features, look at them using wavesurfer
     //Based on that, implement a rule for unvoiced
@@ -117,9 +131,10 @@ namespace upc {
       cout << pot << '\t' << r[1]/r[0] << '\t' << r[lag]/r[0] << endl;
 #endif
     
-    if (unvoiced(pot, r[1]/r[0], r[lag]/r[0]))
+    if (unvoiced(pot, r[1]/r[0], r[lag]/r[0], zcr))
       return 0;
     else
       return (float) samplingFreq/(float) lag;
   }
+
 }
