@@ -142,6 +142,8 @@ Ejercicios básicos
 
 	    Recuerde configurar los paneles de datos para que el desplazamiento de ventana sea el adecuado, que
 		en esta práctica es de 15 ms.
+<img width="1096" alt="Captura de pantalla 2025-05-09 a las 16 51 18" src="https://github.com/user-attachments/assets/4017135c-20b8-4c15-a495-a018114e024f" />
+
 
       - Use el estimador de pitch implementado en el programa `wavesurfer` en una señal de prueba y compare
 	    su resultado con el obtenido por la mejor versión de su propio sistema.  Inserte una gráfica
