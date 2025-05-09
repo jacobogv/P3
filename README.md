@@ -144,6 +144,8 @@ Ejercicios básicos
 		en esta práctica es de 15 ms.
 <img width="1096" alt="Captura de pantalla 2025-05-09 a las 16 51 18" src="https://github.com/user-attachments/assets/4017135c-20b8-4c15-a495-a018114e024f" />
 
+	Como podemos ver en el gráfico hay 4 tramos sonoros que son los tramos con puntos negros en la ventana de arriba que es en la que se mide el pitch. Por 	otro lado los tramos sordos son en los tramos en los que no hay puntos negros en la ventana del pitch. LO que coincide con el waveform de abajo ya que los 	sonoros es los tramos donde estan los picos mas grandes mientras que los sordos es mas bajo y erratico.
+
 
       - Use el estimador de pitch implementado en el programa `wavesurfer` en una señal de prueba y compare
 	    su resultado con el obtenido por la mejor versión de su propio sistema.  Inserte una gráfica
