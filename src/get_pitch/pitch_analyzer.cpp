@@ -93,10 +93,10 @@ namespace upc {
     autocorrelation(x, r);
 
     //vector<float>::const_iterator iR = r.begin(), iRMax = iR;
-    unsigned int lag = 0;
-    float max_corr = r[1];//r[0] no ens interessa.
+    unsigned int lag = npitch_min;
+    float max_corr = r[npitch_min];//r[0] no ens interessa.
 
-    for (unsigned int i = 1; i < r.size(); ++i) {
+    for (unsigned int i = npitch_min; i < npitch_max; ++i) {
       if (r[i] > max_corr) {
         max_corr = r[i];
         lag = i;
@@ -128,10 +128,10 @@ namespace upc {
     //change to #if 1 and compile
 #if 0
     if (r[0] > 0.0F)
-      cout << pot << '\t' << r[1]/r[0] << '\t' << r[lag]/r[0] << endl;
+      cout << pot << '\t' << r[1]/r[0] << '\t' << r[lag]/r[0] << '\t' << lag << endl;
 #endif
     
-    if (unvoiced(pot, r[1]/r[0], r[lag]/r[0], zcr))
+    if (unvoiced(pot, r[1]/r[0], r[lag]/r[0], zcr) || lag == 0)
       return 0;
     else
       return (float) samplingFreq/(float) lag;
