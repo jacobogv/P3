@@ -70,6 +70,7 @@ Options:
     --version   Show the version of the project
     --window=<win>      Window type for pitch analysis [default: RECT]. Choices: RECT, HAMMING
     --low-pass-filter    Apply low-pass filtering to the signal
+    --median-filter    Apply median filtering to the signal
 
 
 Arguments:
@@ -92,6 +93,7 @@ int main(int argc, const char *argv[]) {
 	std::string output_txt = args["<output-txt>"].asString();
   std::string window_type = args["--window"].asString();
   bool low_pass_filter = args["--low-pass-filter"].asBool();
+  bool median_filter = args["--median-filter"].asBool();
 
   // Read input sound file
   unsigned int rate;
@@ -110,6 +112,7 @@ int main(int argc, const char *argv[]) {
   /// \TODO
   /// Preprocess the input signal in order to ease pitch estimation. For instance,
   /// central-clipping or low pass filtering may be used.
+  /// \TODO
   if(low_pass_filter){
     lowPassFilter(x);
   }
@@ -125,7 +128,10 @@ int main(int argc, const char *argv[]) {
   /// \TODO
   /// Postprocess the estimation in order to supress errors. For instance, a median filter
   /// or time-warping may be used.
-  medianFilter(x);
+  /// \TODO
+  if (median_filter){
+    medianFilter(x);
+  }
 
   // Write f0 contour into the output file
   ofstream os(output_txt);

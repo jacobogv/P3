@@ -158,6 +158,34 @@ Ejercicios básicos
     y el *score* TOTAL proporcionados por `pitch_evaluate` en la evaluación de la base de datos 
 	`pitch_db/train`..
 
+  A continuación, se muestra el resumen de la evaluación de la base de datos, sin añadir ningún argumento en la línea de comandos:
+
+  ### Summary
+Num. frames:	11200 = 7045 unvoiced + 4155 voiced
+Unvoiced frames as voiced:	126/7045 (1.79 %)
+Voiced frames as unvoiced:	655/4155 (15.76 %)
+Gross voiced errors (+20.00 %):	46/3500 (1.31 %)
+MSE of fine errors:	2.19 %
+
+===>	TOTAL:	90.02 %
+
+  Ahora, si aplicamos el filtrado pasobajo, obtenemos el siguiente resultado (una mejora en 0.38 décimas respecto a la anterior):
+
+  ### Summary
+Num. frames:	11200 = 7045 unvoiced + 4155 voiced
+Unvoiced frames as voiced:	229/7045 (3.25 %)
+Voiced frames as unvoiced:	501/4155 (12.06 %)
+Gross voiced errors (+20.00 %):	63/3654 (1.72 %)
+MSE of fine errors:	2.35 %
+
+===>	TOTAL:	90.40 %
+
+Es curioso que en aplicar el filtro de mediana y la ventana de Hamming, junto al filtro pasobajo, obtenemos el mismo resultado. 
+
+Finalmente, el elemento que mejora el sistema principalmente es el filtrado pasobajo.
+
+
+
 Ejercicios de ampliación
 ------------------------
 
