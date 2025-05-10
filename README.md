@@ -160,7 +160,8 @@ Ejercicios básicos
 
     A continuación, se muestra el resumen de la evaluación de la base de datos, sin añadir ningún argumento en la línea de comandos:
 
-    ###Summary
+    **Summary**
+
     Num. frames:	11200 = 7045 unvoiced + 4155 voiced
     Unvoiced frames as voiced:	126/7045 (1.79 %)
     Voiced frames as unvoiced:	655/4155 (15.76 %)
@@ -171,7 +172,8 @@ Ejercicios básicos
 
     Ahora, si aplicamos el filtrado pasobajo, obtenemos el siguiente resultado (una mejora en 0.38 décimas respecto a la anterior):
 
-    ###Summary
+    **Summary**
+    
     Num. frames:	11200 = 7045 unvoiced + 4155 voiced
     Unvoiced frames as voiced:	229/7045 (3.25 %)
     Voiced frames as unvoiced:	501/4155 (12.06 %)
