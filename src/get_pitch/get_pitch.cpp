@@ -10,6 +10,9 @@
 
 #include "docopt.h"
 
+#include <algorithm>
+#include <deque>
+
 #define FRAME_LEN   0.030 /* 30 ms. */
 #define FRAME_SHIFT 0.015 /* 15 ms. */
 
@@ -32,25 +35,19 @@ void lowPassFilter(std::vector<float>& signal, int window_size = 5) {
   signal = filtered_signal;
 }
 
-#include <algorithm>  // For std::nth_element
-#include <deque>
-
 void medianFilter(std::vector<float>& f0, int window_size = 5) {
     std::deque<float> window;
     for (size_t i = 0; i < f0.size(); ++i) {
         window.push_back(f0[i]);
         
-        // If the window exceeds the specified size, remove the oldest value
         if (window.size() > window_size) {
             window.pop_front();
         }
 
-        // Only apply median filter after the window is fully populated
         if (window.size() == window_size) {
-            // Create a sorted copy of the window
             std::vector<float> sorted_window(window.begin(), window.end());
             std::nth_element(sorted_window.begin(), sorted_window.begin() + sorted_window.size() / 2, sorted_window.end());
-            f0[i] = sorted_window[sorted_window.size() / 2];  // Replace the current element with the median
+            f0[i] = sorted_window[sorted_window.size() / 2];
         }
     }
 }

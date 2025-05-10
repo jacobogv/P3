@@ -248,7 +248,36 @@ Ejercicios de ampliación
     signal = filtered_signal;
   }
   ```
+  En segundo lugar, el filtro de mediana:
+  ```
+      void medianFilter(std::vector<float>& f0, int window_size = 5) {
+        std::deque<float> window;
+        for (size_t i = 0; i < f0.size(); ++i) {
+            window.push_back(f0[i]);
+            
+            if (window.size() > window_size) {
+                window.pop_front();
+            }
 
+            if (window.size() == window_size) {
+                std::vector<float> sorted_window(window.begin(), window.end());
+                std::nth_element(sorted_window.begin(), sorted_window.begin() + sorted_window.size() / 2, sorted_window.end());
+                f0[i] = sorted_window[sorted_window.size() / 2];
+            }
+        }
+    }
+  ```
+  Y, finalmente, la ventana de Hamming:
+  ```
+   case HAMMING:
+      /// \TODO Implement the Hamming window
+      /// \HECHO
+      for (size_t n = 0; n < frameLen; ++n) {
+        float window_value = 0.54f - 0.46f * std::cos(2.0f * M_PI * n / (frameLen - 1));
+        window[n] = window_value;
+      }
+      break;
+  ```
   También se valorará la realización de un estudio de los parámetros involucrados. Por ejemplo, si se opta
   por implementar el filtro de mediana, se valorará el análisis de los resultados obtenidos en función de
   la longitud del filtro.

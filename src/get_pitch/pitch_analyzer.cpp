@@ -35,7 +35,7 @@ namespace upc {
     window.resize(frameLen);
 
     switch (win_type) {
-    case HAMMING: //no mejora con la Hamming.
+    case HAMMING:
       /// \TODO Implement the Hamming window
       /// \HECHO
       for (size_t n = 0; n < frameLen; ++n) {
