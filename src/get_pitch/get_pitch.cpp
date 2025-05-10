@@ -22,7 +22,6 @@ void lowPassFilter(std::vector<float>& signal, int window_size = 5) {
   for (size_t i = window_size; i < signal.size() - window_size; ++i) {
       float sum = 0.0f;
 
-      // Apply moving average filter by averaging over the window
       for (int j = -window_size; j <= window_size; ++j) {
           sum += signal[i + j];
       }
@@ -30,7 +29,6 @@ void lowPassFilter(std::vector<float>& signal, int window_size = 5) {
       filtered_signal[i] = sum / (2 * window_size + 1);
   }
 
-  // Replace the original signal with the filtered signal
   signal = filtered_signal;
 }
 

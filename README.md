@@ -228,6 +228,27 @@ Ejercicios de ampliación
   Incluya, a continuación, una explicación de las técnicas incorporadas al estimador. Se valorará la
   inclusión de gráficas, tablas, código o cualquier otra cosa que ayude a comprender el trabajo realizado.
 
+  En este programa se ha implementado el filtro pasobajo, el filtro de mediana y la ventana de Hamming.
+
+  En primer lugar, la implementación del filtro pasobajo:
+  ```
+  void lowPassFilter(std::vector<float>& signal, int window_size = 5) {
+    std::vector<float> filtered_signal(signal.size(), 0.0f);
+
+    for (size_t i = window_size; i < signal.size() - window_size; ++i) {
+        float sum = 0.0f;
+
+        for (int j = -window_size; j <= window_size; ++j) {
+            sum += signal[i + j];
+        }
+
+        filtered_signal[i] = sum / (2 * window_size + 1);
+    }
+
+    signal = filtered_signal;
+  }
+  ```
+
   También se valorará la realización de un estudio de los parámetros involucrados. Por ejemplo, si se opta
   por implementar el filtro de mediana, se valorará el análisis de los resultados obtenidos en función de
   la longitud del filtro.
