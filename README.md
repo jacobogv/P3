@@ -173,7 +173,7 @@ Ejercicios básicos
     Ahora, si aplicamos el filtrado pasobajo, obtenemos el siguiente resultado (una mejora en 0.38 décimas respecto a la anterior):
 
     **Summary**
-    
+
     Num. frames:	11200 = 7045 unvoiced + 4155 voiced
     Unvoiced frames as voiced:	229/7045 (3.25 %)
     Voiced frames as unvoiced:	501/4155 (12.06 %)
@@ -200,6 +200,13 @@ Ejercicios de ampliación
 
   * Inserte un *pantallazo* en el que se vea el mensaje de ayuda del programa y un ejemplo de utilización
     con los argumentos añadidos.
+
+    Aquí se muestra el mensaje de ayuda, tras añadir la posibilidad de escoger el tipo de ventana, activar el filtro pasobajo y el filtro de mediana por la línea de comandos:
+
+    ![alt text](<Screenshot 2025-05-10 at 17.50.42.jpg>)
+
+    El ejemplo de utilización se ha comentado en puntos anteriores.
+
 
 - Implemente las técnicas que considere oportunas para optimizar las prestaciones del sistema de estimación
   de pitch.
