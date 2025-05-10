@@ -155,7 +155,14 @@ Como podemos ver en el gráfico hay 4 tramos sonoros que son los tramos con punt
      
 		Aunque puede usar el propio Wavesurfer para obtener la representación, se valorará
 	 	el uso de alternativas de mayor calidad (particularmente Python).
+   Mediante este codigo conseguimos ver las graficas:
+   
+   <img width="716" alt="Captura de pantalla 2025-05-10 a las 23 30 35" src="https://github.com/user-attachments/assets/d62cb1d3-36b2-40a1-b514-1bf820e7024b" />
+
+  <img width="994" alt="Captura de pantalla 2025-05-10 a las 23 25 21" src="https://github.com/user-attachments/assets/5332310d-98b5-423a-be05-557e928128f8" />
+
   
+
   * Optimice los parámetros de su sistema de estimación de pitch e inserte una tabla con las tasas de error
     y el *score* TOTAL proporcionados por `pitch_evaluate` en la evaluación de la base de datos 
 	`pitch_db/train`..
