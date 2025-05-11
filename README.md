@@ -55,55 +55,63 @@ Ejercicios básicos
 
      Se buscará el primer máximo secundario en la gráfica de autocorrelación, esto es, excluyendo el valor de r[0]. Seguidamente, se muestra el desarrollo del código que consigue darnos tal valor:
      ```
-     float PitchAnalyzer::compute_pitch(vector<float> & x) const {
-      if (x.size() != frameLen)
-      return -1.0F;
+          float PitchAnalyzer::compute_pitch(vector<float> & x) const {
+          if (x.size() != frameLen)
+            return -1.0F;
 
-      //Window input frame
-      for (unsigned int i=0; i<x.size(); ++i)
-      x[i] *= window[i];
+          //Window input frame
+          for (unsigned int i=0; i<x.size(); ++i)
+            x[i] *= window[i];
 
-      vector<float> r(npitch_max);
+          vector<float> r(npitch_max);
 
-      //Compute correlation
-      autocorrelation(x, r);
+          //Compute correlation
+          autocorrelation(x, r);
 
-      //vector<float>::const_iterator iR = r.begin(), iRMax = iR;
-      unsigned int lag = 0;
-      float max_corr = r[1];
+          //vector<float>::const_iterator iR = r.begin(), iRMax = iR;
+          unsigned int lag = npitch_min;
+          float max_corr = r[npitch_min];//r[0] no ens interessa.
 
-      for (unsigned int i = 1; i < r.size(); ++i) {
-        if (r[i] > max_corr) {
-          max_corr = r[i];
-          lag = i;
-        }
-      }
+          for (unsigned int i = npitch_min; i < npitch_max; ++i) {
+            if (r[i] > max_corr) {
+              max_corr = r[i];
+              lag = i;
+            }
+          }
 
-      /// \TODO 
-	    /// Find the lag of the maximum value of the autocorrelation away from the origin.<br>
-	    /// Choices to set the minimum value of the lag are:
-	    ///    - The first negative value of the autocorrelation.
-	    ///    - The lag corresponding to the maximum value of the pitch.
-	    /// In either case, the lag should not exceed that of the minimum value of the pitch.
-      /// \HECHO hemos hecho la búsqueda del primer máximo secundario, excluyendo r[0]
+          /// \TODO 
+        /// Find the lag of the maximum value of the autocorrelation away from the origin.<br>
+        /// Choices to set the minimum value of the lag are:
+        ///    - The first negative value of the autocorrelation.
+        ///    - The lag corresponding to the maximum value of the pitch.
+          ///	   .
+        /// In either case, the lag should not exceed that of the minimum value of the pitch.
+        /// \HECHO hemos hecho la búsqueda del primer máximo secundario, excluyendo r[0]
 
-      //unsigned int lag = iRMax - r.begin();
+          //unsigned int lag = iRMax - r.begin();
 
-      float pot = 10 * log10(r[0]);
+          float pot = 10 * log10(r[0]);
+          float zcr = 0;
+          for (size_t i = 1; i < x.size(); ++i) {
+            if ((x[i - 1] >= 0 && x[i] < 0) || (x[i - 1] < 0 && x[i] >= 0)) {
+              zcr += 1;
+            }
+          }
+          zcr /= static_cast<float>(x.size());
 
-      //You can print these (and other) features, look at them using wavesurfer
-      //Based on that, implement a rule for unvoiced
-      //change to #if 1 and compile
+          //You can print these (and other) features, look at them using wavesurfer
+          //Based on that, implement a rule for unvoiced
+          //change to #if 1 and compile
       #if 0
-        if (r[0] > 0.0F)
-          cout << pot << '\t' << r[1]/r[0] << '\t' << r[lag]/r[0] << endl;
+          if (r[0] > 0.0F)
+            cout << pot << '\t' << r[1]/r[0] << '\t' << r[lag]/r[0] << '\t' << lag << endl;
       #endif
-    
-        if (unvoiced(pot, r[1]/r[0], r[lag]/r[0]))
-          return 0;
-        else
-          return (float) samplingFreq/(float) lag;
-      }
+          
+          if (unvoiced(pot, r[1]/r[0], r[lag]/r[0], zcr) || lag == 0)
+            return 0;
+          else
+            return (float) samplingFreq/(float) lag;
+        }
       ```
 * Implemente la regla de decisión sonoro o sordo e inserte el código correspondiente.
 
