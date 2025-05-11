@@ -156,7 +156,7 @@ Ejercicios básicos
 
 
 
-Como podemos ver en el gráfico hay 4 tramos sonoros que son los tramos con puntos negros en la ventana de arriba que es en la que se mide el pitch. Por 	otro lado los tramos sordos son en los tramos en los que no hay puntos negros en la ventana del pitch. LO que coincide con el waveform de abajo ya que los 	sonoros es los tramos donde estan los picos mas grandes mientras que los sordos es mas bajo y erratico.
+      Como podemos ver, en la gráfica hay 4 tramos sonoros que son los tramos con puntos negros en la ventana de arriba, que es en la que se mide el pitch. Por otro lado, los tramos sordos son en los tramos en los que no hay puntos negros en la ventana del pitch. Lo que coincide con el waveform de abajo ya que los 	sonoros son los tramos donde estan los picos más grandes mientras que los sordos son más bajos y erráticos.
 
 
       - Use el estimador de pitch implementado en el programa `wavesurfer` en una señal de prueba y compare
