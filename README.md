@@ -159,9 +159,9 @@ Como podemos ver, en la gráfica hay 4 tramos sonoros que son los tramos con pun
 - Use el estimador de pitch implementado en el programa `wavesurfer` en una señal de prueba y compare
 	    su resultado con el obtenido por la mejor versión de su propio sistema.  Inserte una gráfica
 		ilustrativa del resultado de ambos estimadores.
-     
-		Aunque puede usar el propio Wavesurfer para obtener la representación, se valorará
-	 	el uso de alternativas de mayor calidad (particularmente Python).
+    
+      Aunque puede usar el propio Wavesurfer para obtener la representación, se valorará
+      el uso de alternativas de mayor calidad (particularmente Python).
 
    Mediante éste código conseguimos ver las gráficas:
    
